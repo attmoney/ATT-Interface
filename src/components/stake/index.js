@@ -5,7 +5,7 @@ import PledgeFarm from './pledgeFarm';
 import LiquidFarm from './liquidFarm';
 
 function StakeComponent() {
-  const [activeKey, setActiveKey] = useState(1);
+  const [activeKey, setActiveKey] = useState('1');
 
   function handleSelect(key) {
     setActiveKey(key);
