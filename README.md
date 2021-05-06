@@ -3,19 +3,19 @@
 An open source interface for ATT Money ==> Conditional Rebasing Elastic Supply Token on BinanceSmartChain.
 
 - Interface: [att.money](https://att.money/)
-- Docs: [medium/att.money/](https://att.money/)
+- Docs: [medium: att.money](https://medium.com/@attmoney/)
 - Twitter: [@att_money](https://twitter.com/att_money)
-- Email: [contact@att.money](mailto:xyz@att.money)
+- Email: [devs@att.money](mailto:devs@att.money)
 
+# RUN ATT Interface locally
 
 ### Install Dependencies
-
 ```bash
-npm install
+npm install / yarn
 ```
 
-### Run in development
+### Run App
 
 ```bash
-npm start
+npm start / yarn start
 ```
