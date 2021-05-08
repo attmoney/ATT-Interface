@@ -225,15 +225,15 @@ function DashComponent() {
               </li>
               <li>
                 * Whats there for Liquidity Providers -{''}
-                {/* <a
+                <a
                   className="nes-text is-success"
-                  href="https://medium.com/@attmoney/how-to-earn-att-busd-de61a53d2457"
+                  href="https://attmoney.medium.com/how-to-earn-att-busd-de61a53d2457"
                   target="_blank"
                   rel="noreferrer"
                 >
                   Read Here
-                </a> */}
-                <span className="nes-text is-error">Coming Soon</span>
+                </a>
+                {/* <span className="nes-text is-error">Coming Soon</span> */}
               </li>
               <li>
                 * Margin Trading & Induced Volatility -{''}
