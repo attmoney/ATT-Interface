@@ -100,7 +100,7 @@ function ZeldaComponent() {
                   Twitter
                 </button>
               </a>
-              <a href="#">
+              <a href="https://medium.com/@attmoney/" target="_blank" rel="noreferrer">
                 <button
                   type="button"
                   className="nes-btn is-error"

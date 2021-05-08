@@ -1,6 +1,6 @@
 export const Headers = [
   { name: 'Dash', link: '' },
-  { name: 'Stake', link: 'stake' },
+  { name: 'Farm', link: 'farm' },
   { name: 'xATT', link: 'xAtt' },
   { name: 'Zelda', link: 'zelda' },
 ];

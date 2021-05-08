@@ -4,7 +4,7 @@ import 'nes.css/css/nes.min.css';
 import PledgeFarm from './pledgeFarm';
 import LiquidFarm from './liquidFarm';
 
-function StakeComponent() {
+function FarmComponent() {
   const [activeKey, setActiveKey] = useState('1');
 
   function handleSelect(key) {
@@ -58,7 +58,7 @@ function StakeComponent() {
                   Twitter
                 </button>
               </a>
-              <a href="#">
+              <a href="https://medium.com/@attmoney/" target="_blank" rel="noreferrer">
                 <button
                   type="button"
                   className="nes-btn is-error"
@@ -90,4 +90,4 @@ function StakeComponent() {
   );
 }
 
-export default StakeComponent;
+export default FarmComponent;

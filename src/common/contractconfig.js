@@ -4,6 +4,6 @@ export const contract = {
   RPCURL: 'https://bsc-dataseed1.defibit.io/',
 
   ATTABI: att,
-  ATTAddress: '0x0000000000000000000000000000000000000000'
+  ATTAddress: '0xc667Dd95F5f3a2919DFc4c80C68753C0C6AcCBD0'
 
 };

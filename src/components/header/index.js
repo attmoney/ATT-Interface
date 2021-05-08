@@ -64,7 +64,7 @@ function Header() {
       <ErrorModal />
       <Navbar expand="lg">
         <Navbar.Brand>
-          <a href="http://localhost:3000/#" className="nes-badge">
+          <a href="https://www.att.money/" className="nes-badge">
             <button
               type="button"
               className="nes-btn is-success"
