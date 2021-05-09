@@ -33,9 +33,9 @@ function XAttComponent() {
     setWalletOpen(false)
   }
 
-  async function xStake() {
+  async function xMint() {
     try {
-      if (parseFloat(sAmt) === 0 || sAmt === 0) {
+      if (parseFloat(sAmt) === 0 || sAmt === '0') {
         Error.toastifyMsg('err', 'amount undefined')
       } else if (parseFloat(sAmt) > parseFloat(userstake.userAttbalance)) {
         Error.toastifyMsg('err', 'amount overbounds ')
@@ -63,7 +63,7 @@ function XAttComponent() {
 
   async function xUnstake() {
     try {
-      if (parseFloat(uAmt) === 0 || uAmt === 0) {
+      if (parseFloat(uAmt) === 0 || uAmt === '0') {
         Error.toastifyMsg('err', 'amount undefined')
       } else if (parseFloat(uAmt) > parseFloat(userstake.userxAttStake)) {
         Error.toastifyMsg('err', 'amount overbounds ')
@@ -167,7 +167,7 @@ function XAttComponent() {
                               style={{ marginLeft: '20px' }}
                               onClick={() => {
                                 setScreenLoader(true)
-                                xStake()
+                                xMint()
                               }}
                             >
                               {loaderState && <span>wait ...</span>}

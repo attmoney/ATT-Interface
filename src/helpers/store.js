@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
-import { Wallet, Error, DASH, ZELDA, XATT } from '../reducers';
+import { Wallet, Error, DASH, ZELDA, XATT, FARM } from '../reducers';
 
 const middleWare = applyMiddleware(thunk);
 const Init = () => {
@@ -11,6 +11,7 @@ const Init = () => {
     dash: DASH,
     zelda: ZELDA,
     xAtt: XATT,
+    farm: FARM,
   });
   const store = createStore(reducer, middleWare);
   return store;

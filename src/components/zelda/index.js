@@ -112,7 +112,7 @@ function ZeldaComponent() {
                             {/* {console.log('=======================',claim.hasPendingClaim)} */}
                           </span>{' '}
                         </p>
-                        {claim.hasPendingClaim === false ? (
+                        {claim.hasPendingClaim === true ? (
                           <button
                             type="button"
                             className="nes-btn is-success"
