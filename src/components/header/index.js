@@ -1,80 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-import Logo from '../../assets/logo.png';
-import { Headers } from '../global/constants';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import 'nes.css/css/nes.min.css';
-import MultiWallet from '../../Modals/ConnectWallet';
-import ErrorModal from '../../Modals/Error';
-import WalletDetail from '../../Modals/walletdetail';
-import Provider from '../../helpers/provider';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Navbar, Nav } from 'react-bootstrap'
+import Logo from '../../assets/logo.png'
+import { Headers } from '../global/constants'
+import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import 'nes.css/css/nes.min.css'
+import MultiWallet from '../../Modals/ConnectWallet'
+import ErrorModal from '../../Modals/Error'
+import WalletDetail from '../../Modals/walletdetail'
+import Provider from '../../helpers/provider'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useLocation } from 'react-router-dom'
 
 function Header() {
-  const [walletOpen, setWalletOpen] = useState(false);
-  const wallet = useSelector((state) => state.wallet.walletAddress);
-  const [selectedWallet, setSelectedWallet] = useState(false);
-  const [activeLinksClasses, setActiveLinksClasses] = React.useState(
-    new Array(Headers.length).fill(false)
-  );
+  const [walletOpen, setWalletOpen] = useState(false)
+  const wallet = useSelector((state) => state.wallet.walletAddress)
+  const [selectedWallet, setSelectedWallet] = useState(false)
+  const [activeLinksClasses, setActiveLinksClasses] = React.useState(new Array(Headers.length).fill(false))
 
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
   function setOpen() {
-    setWalletOpen(false);
+    setWalletOpen(false)
   }
 
   function setWalletConnectOpen() {
-    setSelectedWallet(false);
+    setSelectedWallet(false)
   }
 
   function openWalletType() {
-    setSelectedWallet(false);
-    setWalletOpen(true);
+    setSelectedWallet(false)
+    setWalletOpen(true)
   }
 
   useEffect(() => {
     if (wallet !== '') {
-      setOpen();
+      setOpen()
     }
-  }, [wallet]);
+  }, [wallet])
 
   useEffect(() => {
-    const targetedIndex = Headers.map((_path) => '/' + _path.link).indexOf(
-      pathname
-    );
-    const idealActiveClasses = new Array(Headers.length).fill(false);
-    idealActiveClasses[targetedIndex] = true;
-    setActiveLinksClasses(idealActiveClasses);
-  }, [pathname]);
+    const targetedIndex = Headers.map((_path) => '/' + _path.link).indexOf(pathname)
+    const idealActiveClasses = new Array(Headers.length).fill(false)
+    idealActiveClasses[targetedIndex] = true
+    setActiveLinksClasses(idealActiveClasses)
+  }, [pathname])
 
   return (
     <div style={{ marginBottom: '20px' }}>
       <ToastContainer style={{ fontWeight: '600', fontSize: '12px' }} />
       <MultiWallet open={walletOpen} setOpen={setOpen} />
-      <WalletDetail
-        open={selectedWallet}
-        setOpen={setWalletConnectOpen}
-        openWalletType={openWalletType}
-      />
+      <WalletDetail open={selectedWallet} setOpen={setWalletConnectOpen} openWalletType={openWalletType} />
       <Provider />
       <ErrorModal />
       <Navbar expand="lg">
         <Navbar.Brand>
           <a href="https://www.att.money/" className="nes-badge">
-            <button
-              type="button"
-              className="nes-btn is-success"
-              style={{ marginTop: '-5px' }}
-            >
+            <button type="button" className="nes-btn is-success" style={{ marginTop: '-5px' }}>
               {' '}
-              <img
-                src={Logo}
-                style={{ marginTop: '-10px', margin: 'auto', width: '100px' }}
-              />
+              <img src={Logo} style={{ marginTop: '-10px', margin: 'auto', width: '100px' }} />
             </button>
           </a>
         </Navbar.Brand>
@@ -82,18 +67,9 @@ function Header() {
         <Navbar.Collapse>
           <Nav className="mr-auto" style={{ margin: 'auto' }}>
             {Headers.map((data, index) => (
-              <NavLink
-                style={{ marginLeft: '8px' }}
-                to={data.link}
-                exact={true}
-                key={index}
-              >
+              <NavLink style={{ marginLeft: '8px' }} to={data.link} exact={true} key={index}>
                 <p
-                  className={
-                    activeLinksClasses[index]
-                      ? 'nes-btn is-warning headerPtag-active'
-                      : 'nes-btn is-warning'
-                  }
+                  className={activeLinksClasses[index] ? 'nes-btn is-warning headerPtag-active' : 'nes-btn is-warning'}
                   key={index}
                 >
                   {data.name}
@@ -107,37 +83,25 @@ function Header() {
               className="nes-badge"
               style={{ marginTop: '1px' }}
             >
-              <button
-                className="nes-btn is-disabled"
-                style={{ marginLeft: '12px' }}
-                disabled={true}
-              >
+              <button className="nes-btn is-disabled" style={{ marginLeft: '12px' }} disabled={true}>
                 BUY ATT
               </button>
             </a>
           </Nav>
 
           {wallet !== '' ? (
-            <button
-              onClick={() => setSelectedWallet(true)}
-              className="nes-btn is-error"
-            >
-              {wallet &&
-                wallet.substr(0, 6) + '...' + wallet.substr(wallet.length - 4)}
+            <button onClick={() => setSelectedWallet(true)} className="nes-btn is-error">
+              {wallet && wallet.substr(0, 6) + '...' + wallet.substr(wallet.length - 4)}
             </button>
           ) : (
-            <button
-              className="nes-btn is-disabled"
-              onClick={() => setWalletOpen(true)}
-              disabled={true}
-            >
+            <button className="nes-btn is-error" onClick={() => setWalletOpen(true)}>
               Connect wallet
             </button>
           )}
         </Navbar.Collapse>
       </Navbar>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header

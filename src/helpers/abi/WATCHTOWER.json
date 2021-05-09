@@ -1,0 +1,79 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_suer",
+				"type": "address"
+			}
+		],
+		"name": "getClaimZelda",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "hasClaim",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "claimAmount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getHistoryZelda",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "winnerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasPendingClaim",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct watchTower.winnerStruct[]",
+				"name": "winners",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getStatsZelda",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "totalRewardPerDay",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalWinPositionsPerDay",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "winCounter",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
