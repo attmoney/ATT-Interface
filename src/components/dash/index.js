@@ -136,7 +136,9 @@ function DashComponent() {
                 WHAT IS ATT ?
               </p>
               <p style={{ marginTop: '25px' }}>
-                ATT is a conditional rebasing elastic supply token designed to propel platform features in decentralised manner. Core features includes Lending/Borrowing, Margin Trading DEX, Advance Trading - Futures & Options with option to span cross chain.
+                ATT is a conditional rebasing elastic supply token designed to propel platform features in decentralised
+                manner. Core features includes Lending/Borrowing, Margin Trading DEX, Advance Trading - Futures &
+                Options with option to span cross chain.
               </p>
             </div>
           </Col>
@@ -161,13 +163,17 @@ function DashComponent() {
             ATT ENABLERS
           </p>
           <a href="#">
-            <img src={pcsl} style={{ alignContent: 'center', marginRight: '15px'}} />
+            <img src={pcsl} style={{ alignContent: 'center', marginRight: '15px' }} />
             {''}
           </a>
           <a href="https://www.binance.org/en" target="_blank" rel="noreferrer">
             <img src={bscl} style={{ alignContent: 'center', marginRight: '15px' }} />
           </a>
-          <a href="https://bscscan.com/address/0xc667Dd95F5f3a2919DFc4c80C68753C0C6AcCBD0/" target="_blank" rel="noreferrer">
+          <a
+            href="https://bscscan.com/address/0xc667Dd95F5f3a2919DFc4c80C68753C0C6AcCBD0/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={bscsl} style={{ alignContent: 'center', marginRight: '15px' }} />
           </a>
           <a href="#">
@@ -375,9 +381,7 @@ function DashComponent() {
                 </button>
               </a>
               <a href="https://pancakeswap.finance/">
-                <button className="nes-btn is-disabled" disabled={true}>
-                  BUY ATT
-                </button>
+                <button className="nes-btn is-success">BUY ATT</button>
               </a>
             </Row>
           </div>

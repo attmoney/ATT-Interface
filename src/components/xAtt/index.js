@@ -246,9 +246,7 @@ function XAttComponent() {
                 </button>
               </a>
               <a href="https://pancakeswap.finance/">
-                <button className="nes-btn is-disabled" disabled={true}>
-                  BUY ATT
-                </button>
+                <button className="nes-btn is-success">BUY ATT</button>
               </a>
             </Row>
           </div>

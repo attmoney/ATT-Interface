@@ -99,6 +99,9 @@ function ZeldaComponent() {
           <Row style={{ marginTop: '35px' }}>
             <Col md>
               <div className="nes-container is-dark with-title is-centered">
+              <p className="title" style={{ color: '#f7d51d' }}>
+                  Pending Claim
+                </p>
                 {address !== '' ? (
                   <div>
                     {claim !== '' ? (
@@ -109,7 +112,7 @@ function ZeldaComponent() {
                             {/* {console.log('=======================',claim.hasPendingClaim)} */}
                           </span>{' '}
                         </p>
-                        {claim.hasPendingClaim === true ? (
+                        {claim.hasPendingClaim === false ? (
                           <button
                             type="button"
                             className="nes-btn is-success"
@@ -219,9 +222,7 @@ function ZeldaComponent() {
                 </button>
               </a>
               <a href="https://pancakeswap.finance/">
-                <button className="nes-btn is-disabled" disabled={true}>
-                  BUY ATT
-                </button>
+                <button className="nes-btn is-success">BUY ATT</button>
               </a>
             </Row>
           </div>

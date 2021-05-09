@@ -83,7 +83,7 @@ function Header() {
               className="nes-badge"
               style={{ marginTop: '1px' }}
             >
-              <button className="nes-btn is-disabled" style={{ marginLeft: '12px' }} disabled={true}>
+              <button className="nes-btn is-success" style={{ marginLeft: '12px' }}>
                 BUY ATT
               </button>
             </a>
