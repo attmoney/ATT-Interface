@@ -54,6 +54,53 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getStakeStatsXAtt",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "userAttbalance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "userXAttBalance",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getStatsXAtt",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "currentSupply",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalAttLocked",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "currentRate",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "getStatsZelda",
 		"outputs": [
