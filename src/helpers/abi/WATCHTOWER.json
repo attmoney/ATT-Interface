@@ -1,0 +1,183 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getClaimZelda",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "hasClaim",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "claimAmount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getHistoryZelda",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "winnerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasPendingClaim",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct watchTower.winnerStruct[]",
+				"name": "winners",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getStakeStatsXAtt",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "userAttbalance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "userXAttBalance",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getStatsXAtt",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "currentSupply",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalAttLocked",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "currentRate",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getStatsZelda",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "totalRewardPerDay",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalWinPositionsPerDay",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "winCounter",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "statsLiquid",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "totalStaked",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalRewardLeft",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "rewardReset",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "pid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "userStakeStatsLiquid",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "userbalance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "userStake",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "userExpectedReturn",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

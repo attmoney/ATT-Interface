@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Nav, Container, Row } from 'react-bootstrap';
-import 'nes.css/css/nes.min.css';
-import PledgeFarm from './pledgeFarm';
-import LiquidFarm from './liquidFarm';
+import React, { useState } from 'react'
+import { Nav, Container, Row } from 'react-bootstrap'
+import 'nes.css/css/nes.min.css'
+import PledgeFarm from './pledgeFarm'
+import LiquidFarm from './liquidFarm'
 
 function FarmComponent() {
-  const [activeKey, setActiveKey] = useState('1');
+  const [activeKey, setActiveKey] = useState('1')
 
   function handleSelect(key) {
-    setActiveKey(key);
+    setActiveKey(key)
   }
 
   return (
@@ -16,13 +16,7 @@ function FarmComponent() {
       <div className="margintop50 marginbottom50 col-md-12">
         <Container style={{ marginTop: '40px' }}></Container>
         <div style={{ marginTop: '10px' }}>
-          <Nav
-            fill="red"
-            variant="tabs"
-            justify
-            activeKey={activeKey}
-            onSelect={handleSelect}
-          >
+          <Nav fill="red" variant="tabs" justify activeKey={activeKey} onSelect={handleSelect}>
             <Nav.Item>
               <Nav.Link eventKey={1}>
                 <span className="nes-text is-error">ATT Liquid Farm</span>
@@ -50,36 +44,22 @@ function FarmComponent() {
           <div>
             <Row className="is-centered" style={{ paddingLeft: '130px' }}>
               <a href="https://twitter.com/att_money" target="_blank" rel="noreferrer">
-                <button
-                  type="button"
-                  className="nes-btn is-primary"
-                  style={{ marginRight: '18px' }}
-                >
+                <button type="button" className="nes-btn is-primary" style={{ marginRight: '18px' }}>
                   Twitter
                 </button>
               </a>
               <a href="https://medium.com/@attmoney/" target="_blank" rel="noreferrer">
-                <button
-                  type="button"
-                  className="nes-btn is-error"
-                  style={{ marginRight: '18px' }}
-                >
+                <button type="button" className="nes-btn is-error" style={{ marginRight: '18px' }}>
                   Medium
                 </button>
               </a>
               <a href="https://github.com/attmoney" target="_blank" rel="noreferrer">
-                <button
-                  type="button"
-                  className="nes-btn is-error"
-                  style={{ marginRight: '18px' }}
-                >
+                <button type="button" className="nes-btn is-error" style={{ marginRight: '18px' }}>
                   GitHub
                 </button>
               </a>
               <a href="https://pancakeswap.finance/">
-                <button className="nes-btn is-disabled" disabled={true}>
-                  BUY ATT
-                </button>
+                <button className="nes-btn is-success">BUY ATT</button>
               </a>
             </Row>
           </div>
@@ -87,7 +67,7 @@ function FarmComponent() {
       </Container>
       <Container style={{ marginTop: '10px' }}></Container>
     </div>
-  );
+  )
 }
 
-export default FarmComponent;
+export default FarmComponent
