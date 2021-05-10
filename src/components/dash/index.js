@@ -36,7 +36,7 @@ function DashComponent() {
   async function performRebase() {
     try {
       const web3WalletWrapper = new Web3(currentProvider)
-      const Instance = new web3WalletWrapper.eth.Contract(contract.ATTRebaseABI, contract.ATTRebaseAddress)
+      const Instance = new web3WalletWrapper.eth.Contract(contract.MasterABI, contract.MasterAddress)
       const _result = await Instance.methods.rebase().send({ from: address })
       if (_result) {
         dispatch(DASH.getPrimaryStats())
@@ -45,6 +45,7 @@ function DashComponent() {
         Error.toastifyMsg('err', 'Rebase Failed')
       }
     } catch (err) {
+      console.log('err',err);
       Error.toastifyMsg('err', 'Rebase Failed')
     }
     setScreenLoader(false)
@@ -61,7 +62,7 @@ function DashComponent() {
               <p className="title" style={{ color: '#f7d51d' }}>
                 TVL
               </p>
-              <span className="nes-text is-success">NA</span>
+              <span className="nes-text is-success">{primaryStats.tvl} $</span>
             </div>
           </Card>
         </div>
@@ -72,7 +73,7 @@ function DashComponent() {
               <p className="title" style={{ color: '#f7d51d' }}>
                 OracleRate
               </p>
-              <span className="nes-text is-success">NA</span>
+              <span className="nes-text is-success">{primaryStats.oracleRate} $</span>
             </div>
           </Card>
         </div>
@@ -83,7 +84,7 @@ function DashComponent() {
               <p className="title" style={{ color: '#f7d51d' }}>
                 MarketCap
               </p>
-              <span className="nes-text is-success">NA</span>
+              <span className="nes-text is-success">{primaryStats.marketCap} $</span>
             </div>
           </Card>
         </div>
@@ -96,7 +97,7 @@ function DashComponent() {
               <p className="title" style={{ color: '#f7d51d' }}>
                 BasePrice
               </p>
-              <span className="nes-text is-success">$1 (1% tolerance)</span>
+              <span className="nes-text is-success">{primaryStats.basePrice} $ (1% tolerance)</span>
             </div>
           </Card>
         </div>
@@ -118,7 +119,7 @@ function DashComponent() {
               <p className="title" style={{ color: '#f7d51d' }}>
                 Next BuyBack
               </p>
-              <span className="nes-text is-success">NA</span>
+              <span className="nes-text is-success">{primaryStats.nextBuyBack}{' '}</span>
             </div>
           </Card>
         </div>
@@ -257,11 +258,11 @@ function DashComponent() {
                 <p className="title" style={{ color: '#f7d51d' }}>
                   Last Rebase
                 </p>
-                <span className="nes-text is-success">NA</span>
+                <span className="nes-text is-success">{primaryStats.lastRebase}</span>
               </div>
             </Card>
           </div>
-          {canRebase !== false ? (
+          {canRebase !== primaryStats.canRebase ? (
             <div>
               {address !== '' ? (
                 <div>
@@ -292,7 +293,6 @@ function DashComponent() {
                   className="nes-btn is-error"
                   style={{ marginTop: '30px' }}
                   onClick={() => setWalletOpen(true)}
-                  disabled={true}
                 >
                   Connect wallet
                 </button>
@@ -312,7 +312,7 @@ function DashComponent() {
                 <p className="title" style={{ color: '#f7d51d' }}>
                   Next Rebase
                 </p>
-                <span className="nes-text is-success">NA</span>
+                <span className="nes-text is-success">{primaryStats.nextRebase}</span>
               </div>
             </Card>
           </div>
