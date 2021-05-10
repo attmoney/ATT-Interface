@@ -147,6 +147,34 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "statsPledge",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "totalStaked",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalRewardLeftAtt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalRewardLeftBusd",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "rewardEnd",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -175,6 +203,50 @@
 				"internalType": "uint256",
 				"name": "userExpectedReturn",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "pid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "userStakeStatsPledge",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "userbalance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "userStake",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "userExpectedReturnAtt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "userExpectedReturnBusd",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "canUnstake",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",

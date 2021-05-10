@@ -7,7 +7,6 @@ export const FARM = {
   getUserStakeLiquid,
   getStatsPledge,
   getUserStakePledge,
-  getUserUnstakePledge,
 }
 
 function getStatsLiquid() {
@@ -23,11 +22,11 @@ function getStatsLiquid() {
       const Instance = new web3.eth.Contract(contract.WatchTowerABI, contract.WatchTowerAddress)
       const _scResult = await Instance.methods.statsLiquid().call()
 
-      console.log('_scResult', _scResult);
+      console.log('_scResult', _scResult)
 
-      fResponse.totalStaked = parseFloat(web3.utils.fromWei(_scResult.totalStaked, 'gwei')).toFixed(2);
-      fResponse.totalRewardLeft = parseFloat(web3.utils.fromWei(_scResult.totalRewardLeft, 'gwei')).toFixed(2);
-      fResponse.rewardReset = _scResult.rewardReset;
+      fResponse.totalStaked = parseFloat(web3.utils.fromWei(_scResult.totalStaked, 'ether')).toFixed(2)
+      fResponse.totalRewardLeft = parseFloat(web3.utils.fromWei(_scResult.totalRewardLeft, 'gwei')).toFixed(2)
+      fResponse.rewardReset = _scResult.rewardReset
 
       const _result = fResponse
       console.log('_result', _result)
@@ -48,13 +47,13 @@ function getUserStakeLiquid(address) {
       }
       const web3 = new Web3(contract.RPCURL)
       const Instance = new web3.eth.Contract(contract.WatchTowerABI, contract.WatchTowerAddress)
-      const _scResult = await Instance.methods.userStakeStatsLiquid(0,address).call()
+      const _scResult = await Instance.methods.userStakeStatsLiquid(0, address).call()
 
-      console.log('_scResult', _scResult);
+      console.log('_scResult', _scResult)
 
-      fResponse.userbalance = parseFloat(web3.utils.fromWei(_scResult.userbalance, 'ether')).toFixed(2);
-      fResponse.userStake = parseFloat(web3.utils.fromWei(_scResult.userStake, 'ether')).toFixed(2);
-      fResponse.userExpectedReturn = parseFloat(web3.utils.fromWei(_scResult.userExpectedReturn, 'gwei')).toFixed(2);
+      fResponse.userbalance = parseFloat(web3.utils.fromWei(_scResult.userbalance, 'ether')).toFixed(2)
+      fResponse.userStake = parseFloat(web3.utils.fromWei(_scResult.userStake, 'ether')).toFixed(2)
+      fResponse.userExpectedReturn = parseFloat(web3.utils.fromWei(_scResult.userExpectedReturn, 'gwei')).toFixed(2)
 
       const _result = fResponse
       console.log('_result', _result)
@@ -65,7 +64,6 @@ function getUserStakeLiquid(address) {
   }
 }
 
-
 function getStatsPledge() {
   return async (dispatch) => {
     try {
@@ -73,20 +71,23 @@ function getStatsPledge() {
         totalStaked: 0,
         totalRewardLeftAtt: 0,
         totalRewardLeftBusd: 0,
-        rewardReset: 0,
-        apy: 0,
+        rewardEnd: 0,
+        apy: 100,
       }
       const web3 = new Web3(contract.RPCURL)
       const Instance = new web3.eth.Contract(contract.WatchTowerABI, contract.WatchTowerAddress)
-      const _scResult = await Instance.methods.getStatsXAtt().call()
+      const _scResult = await Instance.methods.statsPledge().call()
 
-      // console.log('_scResult', _scResult)
-      fResponse.currentSupply = parseFloat(web3.utils.fromWei(_scResult.currentSupply, 'ether')).toFixed(2)
-      fResponse.totalAttLocked = parseFloat(web3.utils.fromWei(_scResult.totalAttLocked, 'gwei')).toFixed(2)
-      fResponse.currentRate = parseFloat(web3.utils.fromWei(_scResult.currentRate, 'gwei')).toFixed(2)
+      //console.log('_scResult', _scResult)
+
+      fResponse.totalStaked = parseFloat(web3.utils.fromWei(_scResult.totalStaked, 'ether')).toFixed(2)
+      fResponse.totalRewardLeftAtt = parseFloat(web3.utils.fromWei(_scResult.totalRewardLeftAtt, 'gwei')).toFixed(2)
+      fResponse.totalRewardLeftBusd = parseFloat(web3.utils.fromWei(_scResult.totalRewardLeftBusd, 'ether')).toFixed(2)
+      fResponse.rewardEnd = _scResult.rewardEnd
 
       const _result = fResponse
-      // console.log('_result', _result)
+      //console.log('_result', _result)
+
       dispatch(setStatsPledge(_result))
     } catch (err) {
       console.log(err)
@@ -100,47 +101,30 @@ function getUserStakePledge(address) {
       const fResponse = {
         userbalance: 0,
         userStake: 0,
-        userExpectedReturn: 0,
-      }
-      const web3 = new Web3(contract.RPCURL)
-      const Instance = new web3.eth.Contract(contract.WatchTowerABI, contract.WatchTowerAddress)
-      const _scResult = await Instance.methods.getStakeStatsXAtt(address).call()
-
-      console.log('_scResult', _scResult)
-
-      fResponse.userAttBalance = parseFloat(web3.utils.fromWei(_scResult.userAttbalance, 'gwei')).toFixed(2)
-      fResponse.userXAttBalance = parseFloat(web3.utils.fromWei(_scResult.userXAttBalance, 'ether')).toFixed(2)
-
-      const _result = fResponse
-      console.log('_result', _result)
-      dispatch(setUserStakePledge(_result))
-    } catch (err) {
-      console.log(err)
-    }
-  }
-}
-
-function getUserUnstakePledge(address) {
-  return async (dispatch) => {
-    try {
-      const fResponse = {
-        userStake: 0,
         userExpectedReturnAtt: 0,
         userExpectedReturnBusd: 0,
         canUnstake: false,
       }
       const web3 = new Web3(contract.RPCURL)
       const Instance = new web3.eth.Contract(contract.WatchTowerABI, contract.WatchTowerAddress)
-      const _scResult = await Instance.methods.getStakeStatsXAtt(address).call()
+      const _scResult = await Instance.methods.userStakeStatsPledge(0, address).call()
 
       console.log('_scResult', _scResult)
 
-      fResponse.userAttBalance = parseFloat(web3.utils.fromWei(_scResult.userAttbalance, 'gwei')).toFixed(2)
-      fResponse.userXAttBalance = parseFloat(web3.utils.fromWei(_scResult.userXAttBalance, 'ether')).toFixed(2)
+      fResponse.userbalance = parseFloat(web3.utils.fromWei(_scResult.userbalance, 'ether')).toFixed(2)
+      fResponse.userStake = parseFloat(web3.utils.fromWei(_scResult.userStake, 'ether')).toFixed(2)
+      fResponse.userExpectedReturnAtt = parseFloat(web3.utils.fromWei(_scResult.userExpectedReturnAtt, 'gwei')).toFixed(
+        2
+      )
+      fResponse.userExpectedReturnBusd = parseFloat(
+        web3.utils.fromWei(_scResult.userExpectedReturnBusd, 'ether')
+      ).toFixed(2)
+      fResponse.canUnstake = _scResult.canUnstake
 
       const _result = fResponse
       console.log('_result', _result)
-      dispatch(setUserUnstakePledge(_result))
+
+      dispatch(setUserStakePledge(_result))
     } catch (err) {
       console.log(err)
     }
@@ -161,8 +145,4 @@ function setStatsPledge(value) {
 
 function setUserStakePledge(value) {
   return { type: Types.FARM_USER_STAKE_PLEDGE, value }
-}
-
-function setUserUnstakePledge(value) {
-  return { type: Types.FARM_USER_UNSTAKE_PLEDGE, value }
 }
