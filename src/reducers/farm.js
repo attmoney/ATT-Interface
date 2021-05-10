@@ -35,12 +35,6 @@ export const FARM = (state = initialState, action) => {
         userStakePledge: action.value,
       }
 
-    case Types.FARM_USER_UNSTAKE_PLEDGE:
-      return {
-        ...state,
-        userUnstakePledge: action.value,
-      }
-
     default:
       return state
   }

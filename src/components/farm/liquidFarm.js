@@ -199,7 +199,7 @@ function LiquidComponent() {
                       </Tab>
                       <Tab eventKey="unstake" title="Unstake">
                       <p style={{ marginTop: '30px' }}>
-                          <span className="nes-text is-success">MINT xATT</span>{' '}
+                          <span className="nes-text is-success">Unstake LP</span>{' '}
                         </p>
                         <p style={{ marginTop: '30px' }}>
                           <span className="nes-text is-success">
