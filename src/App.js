@@ -4,7 +4,8 @@ import Layout from './components/layout';
 import Dash from './components/dash';
 import Farm from './components/farm';
 import XAtt from './components/xAtt';
-import zelda from './components/zelda';
+import Zelda from './components/zelda';
+import Buy from './components/buy';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <Layout>
           <Route path='/' exact component={Dash} />
           <Route path='/farm' exact component={Farm} />
-          <Route path='/zelda' exact component={zelda} />
-          <Route path='/xAtt' exact component={XAtt} />
+          <Route path='/zelda' exact component={Zelda} />
+          <Route path='/xAtt' exact component={XAtt} />          
+          <Route path='/buy' exact component={Buy} />
         </Layout>
       </Switch>
     </BrowserRouter>

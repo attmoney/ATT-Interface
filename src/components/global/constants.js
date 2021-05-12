@@ -3,4 +3,5 @@ export const Headers = [
   { name: 'Farm', link: 'farm' },
   { name: 'xATT', link: 'xAtt' },
   { name: 'Zelda', link: 'zelda' },
+  { name: 'BUY ATT', link: 'buy' },
 ];

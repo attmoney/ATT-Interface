@@ -91,7 +91,7 @@ function Header() {
                 <p
                   className={
                     activeLinksClasses[index]
-                      ? 'nes-btn is-warning headerPtag-active'
+                      ? 'nes-btn is-success headerPtag-active'
                       : 'nes-btn is-warning'
                   }
                   key={index}
@@ -101,18 +101,17 @@ function Header() {
               </NavLink>
             ))}
             <a
-              href="https://pancakeswap.finance/"
+              href="https://forms.gle/NjdZ98cFfCHGqpub7"
               rel="noreferrer"
               target="_blank"
               className="nes-badge"
               style={{ marginTop: '1px' }}
             >
               <button
-                className="nes-btn is-disabled"
+                className="nes-btn"
                 style={{ marginLeft: '12px' }}
-                disabled={true}
               >
-                BUY ATT
+                Airdrop
               </button>
             </a>
           </Nav>
