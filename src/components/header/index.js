@@ -126,9 +126,8 @@ function Header() {
             </button>
           ) : (
             <button
-              className="nes-btn is-disabled"
+              className="nes-btn is-error"
               onClick={() => setWalletOpen(true)}
-              disabled={true}
             >
               Connect wallet
             </button>

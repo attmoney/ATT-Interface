@@ -11,10 +11,10 @@ function getPrimaryStats() {
     try {
       const fResponse = {
         circulatingSupply: 0,
-        tvl: 0,
         oracleRate: 0,
+        basePrice: 0,
         marketCap: 0,
-        basePrice: 1,
+        tvl: 0,
         nextBuyBack: 'NA',
         lastRebase: 'NA',
         nextRebase: 'NA',
@@ -30,11 +30,11 @@ function getPrimaryStats() {
       console.log('_scResult', _scResult)
 
       fResponse.circulatingSupply = parseFloat(web3.utils.fromWei(_scResult.circulatingSupply, 'gwei')).toFixed(2)
-      fResponse.tvl = parseFloat(web3.utils.fromWei(_scResult.tvl, 'ether')).toFixed(2)
-      fResponse.oracleRate = parseFloat(web3.utils.fromWei(_scResult.oracleRate, 'ether')).toFixed(2)
+      fResponse.oracleRate = parseFloat(web3.utils.fromWei(_scResult.oracleRate, 'ether')).toFixed(5)
       fResponse.basePrice = parseFloat(web3.utils.fromWei(_scResult.basePrice, 'ether')).toFixed(2)
       fResponse.marketCap = fResponse.oracleRate * fResponse.circulatingSupply;
-
+      fResponse.tvl = fResponse.marketCap;
+      
       const _result = fResponse;
       dispatch(setPrimaryStats(_result));
     } catch (err) {

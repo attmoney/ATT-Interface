@@ -35,23 +35,27 @@ function BuyComponent() {
       const web3WalletWrapper = new Web3(currentProvider)
       const Instance = new web3WalletWrapper.eth.Contract(contract.WatchTowerABI, contract.WatchTowerAddress)
       const _enteredValue = await web3WalletWrapper.utils.toWei(enteredAmount, 'ether')
-      console.log('Entered value', _enteredValue)
-      const _result = await Instance.methods._getTokenAmount(_enteredValue).call({ from: address })
+      const _result = await Instance.methods.getTokenAmount(_enteredValue).call({ from: address })
       const displayAmt = await web3WalletWrapper.utils.fromWei(_result, 'gwei')
       setAttAmount(parseFloat(displayAmt).toFixed(2))
     }
   }
 
-  async function buyTokens() {
+  async function buyToken() {
     try {
-      console.log('setAmount', setAmt)
-      const web3WalletWrapper = new Web3(currentProvider)
-      const Instance = new web3WalletWrapper.eth.Contract(contract.CrowdsaleABI, contract.CrowdSaleAddress)
-      const _enteredValue = await web3WalletWrapper.utils.toWei(setAmt, 'ether');
-      const _result = await Instance.methods.buyToken().send({ from: address, value: _enteredValue})
-      console.log(_result)
-      if (_result) {
-        Error.toastifyMsg('info', 'BUY Success')
+      if (setAmt !== 0 && setAmt !== ' ' && setAmt !== '') {
+        console.log('setAmount', setAmt)
+        const web3WalletWrapper = new Web3(currentProvider)
+        const Instance = new web3WalletWrapper.eth.Contract(contract.CrowdsaleABI, contract.CrowdSaleAddress)
+        const _enteredValue = await web3WalletWrapper.utils.toWei(setAmt, 'ether')
+        const _result = await Instance.methods.buyTokens(address).send({ from: address, value: _enteredValue })
+        console.log(_result)
+        if (_result) {
+          Error.toastifyMsg('info', 'BUY Success')
+          dispatch(BUY.getStats())
+        } else {
+          Error.toastifyMsg('err', 'BUY Failed')
+        }
       } else {
         Error.toastifyMsg('err', 'BUY Failed')
       }
@@ -71,7 +75,7 @@ function BuyComponent() {
           <Card className="mb-2 ">
             <div className="nes-container is-dark with-title is-centered">
               <p className="title" style={{ color: '#f7d51d' }}>
-                Total Sold
+                TotalSold
               </p>
               <span className="nes-text is-success">{stats.totalSold} ATT</span>
             </div>
@@ -82,7 +86,7 @@ function BuyComponent() {
           <Card className="mb-2 ">
             <div className="nes-container is-dark with-title is-centered">
               <p className="title" style={{ color: '#f7d51d' }}>
-                Total Raised
+                TotatlRaised
               </p>
               <span className="nes-text is-success">{stats.totalRaised} BNB</span>
             </div>
@@ -93,9 +97,9 @@ function BuyComponent() {
           <Card className="mb-2 ">
             <div className="nes-container is-dark with-title is-centered">
               <p className="title" style={{ color: '#f7d51d' }}>
-                Sale End Date
+                SaleStatus
               </p>
-              <span className="nes-text is-success">{stats.endDate}</span>
+              <span className="nes-text is-success">{stats.saleStatus}</span>
             </div>
           </Card>
         </div>
@@ -115,7 +119,7 @@ function BuyComponent() {
               target="_blank"
               rel="noreferrer"
             >
-              WHY TO BUY.
+              WHY TO BUY ?
             </a>
           </p>
 
@@ -155,7 +159,7 @@ function BuyComponent() {
                       style={{ marginTop: '15px' }}
                       onClick={() => {
                         setScreenLoader(true)
-                        buyTokens()
+                        buyToken()
                       }}
                     >
                       {loaderState && <span>wait ...</span>}

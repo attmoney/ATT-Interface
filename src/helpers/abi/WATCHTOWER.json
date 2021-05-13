@@ -2,20 +2,44 @@
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "_sale",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
-				"name": "weiAmount",
+				"name": "amt",
 				"type": "uint256"
 			}
 		],
-		"name": "_getTokenAmount",
+		"name": "getTokenAmount",
 		"outputs": [
 			{
 				"internalType": "uint256",
-				"name": "",
+				"name": "result",
 				"type": "uint256"
 			}
 		],
-		"stateMutability": "pure",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "sale",
+		"outputs": [
+			{
+				"internalType": "contract IAttCrowdSale",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -33,9 +57,9 @@
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
-				"name": "endDate",
-				"type": "uint256"
+				"internalType": "bool",
+				"name": "isActive",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -52,11 +76,6 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "tvl",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
 				"name": "oracleRate",
 				"type": "uint256"
 			},
@@ -64,26 +83,6 @@
 				"internalType": "uint256",
 				"name": "basePrice",
 				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "nextBuyBack",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "lastRebase",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "nextRebase",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "canRebase",
-				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
