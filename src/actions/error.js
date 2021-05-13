@@ -2,9 +2,9 @@ import { Types } from './types';
 import { toast } from 'react-toastify';
 
 const toastifyAlign = {
-    position: 'bottom-center',
-    autoClose: 3000,
-    hideProgressBar: true,
+    position: 'top-right',
+    autoClose: 5000,
+    hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
@@ -33,7 +33,9 @@ function toastifyMsg(type, msg) {
         toast.success(msg, toastifyAlign);
     }
     else if (type === 'err') {
-        toast.error(msg, toastifyAlign);
+        toast.info(msg, toastifyAlign);
+    } else if (type === 'tx') {
+        toast.dark(msg, toastifyAlign);
     }
 }
 

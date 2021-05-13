@@ -3,6 +3,7 @@ import { Nav, Container, Row } from 'react-bootstrap'
 import 'nes.css/css/nes.min.css'
 import PledgeFarm from './pledgeFarm'
 import LiquidFarm from './liquidFarm'
+import { Link } from 'react-router-dom'
 
 function FarmComponent() {
   const [activeKey, setActiveKey] = useState('1')
@@ -58,11 +59,9 @@ function FarmComponent() {
                   GitHub
                 </button>
               </a>
-              <a href="https://pancakeswap.finance/">
-                <button className="nes-btn is-disabled" disabled={true}>
-                  BUY ATT
-                </button>
-              </a>
+              <Link to="/buy">
+                <button className="nes-btn is-success">BUY ATT</button>
+              </Link>
             </Row>
           </div>
         </div>

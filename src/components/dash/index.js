@@ -12,6 +12,7 @@ import Web3 from 'web3'
 import { contract } from '../../common/contractconfig'
 import MultiWallet from '../../Modals/ConnectWallet'
 import { Error } from '../../actions'
+import { Link } from 'react-router-dom'
 
 function DashComponent() {
   const dispatch = useDispatch()
@@ -45,7 +46,7 @@ function DashComponent() {
         Error.toastifyMsg('err', 'Rebase Failed')
       }
     } catch (err) {
-      console.log('err',err);
+      console.log('err', err)
       Error.toastifyMsg('err', 'Rebase Failed')
     }
     setScreenLoader(false)
@@ -119,7 +120,7 @@ function DashComponent() {
               <p className="title" style={{ color: '#f7d51d' }}>
                 Next BuyBack
               </p>
-              <span className="nes-text is-success">{primaryStats.nextBuyBack}{' '}</span>
+              <span className="nes-text is-success">{primaryStats.nextBuyBack} </span>
             </div>
           </Card>
         </div>
@@ -289,11 +290,7 @@ function DashComponent() {
                   </button>
                 </div>
               ) : (
-                <button
-                  className="nes-btn is-error"
-                  style={{ marginTop: '30px' }}
-                  onClick={() => setWalletOpen(true)}
-                >
+                <button className="nes-btn is-error" style={{ marginTop: '30px' }} onClick={() => setWalletOpen(true)}>
                   Connect wallet
                 </button>
               )}
@@ -380,9 +377,12 @@ function DashComponent() {
                   GitHub
                 </button>
               </a>
-              <a href="https://pancakeswap.finance/">
+              <Link to="/buy">
                 <button className="nes-btn is-success">BUY ATT</button>
-              </a>
+              </Link>
+              {/* <a >
+                <button className="nes-btn is-success">BUY ATT</button>
+              </a> */}
             </Row>
           </div>
         </div>

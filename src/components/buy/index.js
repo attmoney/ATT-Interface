@@ -7,6 +7,7 @@ import Web3 from 'web3'
 import { contract } from '../../common/contractconfig'
 import MultiWallet from '../../Modals/ConnectWallet'
 import { Error } from '../../actions'
+import { Link } from 'react-router-dom'
 
 function BuyComponent() {
   const dispatch = useDispatch()
@@ -31,32 +32,55 @@ function BuyComponent() {
   }
 
   async function updateEst(enteredAmount) {
-    if (enteredAmount !== 0 && enteredAmount !== ' ' && enteredAmount !== '') {
+    if (
+      enteredAmount !== 0 &&
+      parseFloat(enteredAmount) > 0 &&
+      enteredAmount !== '0' &&
+      enteredAmount !== ' ' &&
+      enteredAmount !== ''
+    ) {
+      console.log('setAmount', typeof enteredAmount)
       const web3WalletWrapper = new Web3(currentProvider)
       const Instance = new web3WalletWrapper.eth.Contract(contract.WatchTowerABI, contract.WatchTowerAddress)
       const _enteredValue = await web3WalletWrapper.utils.toWei(enteredAmount, 'ether')
       const _result = await Instance.methods.getTokenAmount(_enteredValue).call({ from: address })
       const displayAmt = await web3WalletWrapper.utils.fromWei(_result, 'gwei')
       setAttAmount(parseFloat(displayAmt).toFixed(2))
+    } else {
+      setAttAmount(0)
     }
   }
 
   async function buyToken() {
     try {
-      if (setAmt !== 0 && setAmt !== ' ' && setAmt !== '') {
-        console.log('setAmount', setAmt)
+      if (setAmt !== 0 && parseFloat(setAmt) > 0 && setAmt !== '0' && setAmt !== ' ' && setAmt !== '') {
+        console.log('setAmount', typeof setAmt)
         const web3WalletWrapper = new Web3(currentProvider)
         const Instance = new web3WalletWrapper.eth.Contract(contract.CrowdsaleABI, contract.CrowdSaleAddress)
         const _enteredValue = await web3WalletWrapper.utils.toWei(setAmt, 'ether')
         const _result = await Instance.methods.buyTokens(address).send({ from: address, value: _enteredValue })
-        console.log(_result)
+        console.log(_result.transactionHash)
         if (_result) {
-          Error.toastifyMsg('info', 'BUY Success')
+          const txHash = 'https://testnet.bscscan.com/tx/' + _result.transactionHash
+          Error.toastifyMsg(
+            'tx',
+            <div>
+              <p>
+                <i className="nes-icon trophy is-large"> </i>
+                Transaction Successful
+              </p>
+              <p> </p>
+              <a href={txHash} style={{color: 'skyblue'}}target="_blank" rel="noreferrer">
+                Check Transaction Status Here
+              </a>
+            </div>
+          )
           dispatch(BUY.getStats())
         } else {
           Error.toastifyMsg('err', 'BUY Failed')
         }
       } else {
+        setBnbAmount(0)
         Error.toastifyMsg('err', 'BUY Failed')
       }
     } catch (err) {
@@ -86,7 +110,7 @@ function BuyComponent() {
           <Card className="mb-2 ">
             <div className="nes-container is-dark with-title is-centered">
               <p className="title" style={{ color: '#f7d51d' }}>
-                TotatlRaised
+                TotalRaised
               </p>
               <span className="nes-text is-success">{stats.totalRaised} BNB</span>
             </div>
@@ -115,11 +139,11 @@ function BuyComponent() {
             trading ecosystem.{' '}
             <a
               className="nes-text is-success"
-              href="https://attmoney.medium.com/att-negative-rebases-price-protection-bd147b05356d"
+              href="https://attmoney.medium.com/att-public-sale-announcement-3161a0ebb200"
               target="_blank"
               rel="noreferrer"
             >
-              WHY TO BUY ?
+              Read More.
             </a>
           </p>
 
@@ -204,11 +228,9 @@ function BuyComponent() {
                   GitHub
                 </button>
               </a>
-              <a href="https://pancakeswap.finance/">
-                <button className="nes-btn is-disabled" disabled={true}>
-                  BUY ATT
-                </button>
-              </a>
+              <Link to="/buy">
+                <button className="nes-btn is-success">BUY ATT</button>
+              </Link>
             </Row>
           </div>
         </div>

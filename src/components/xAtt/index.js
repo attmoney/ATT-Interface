@@ -1,6 +1,7 @@
 import React  from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import 'nes.css/css/nes.min.css';
+import { Link } from 'react-router-dom'
 
 function XAttComponent() {
   return (
@@ -98,11 +99,9 @@ function XAttComponent() {
                   GitHub
                 </button>
               </a>
-              <a href="https://pancakeswap.finance/">
-                <button className="nes-btn is-disabled" disabled={true}>
-                  BUY ATT
-                </button>
-              </a>
+              <Link to="/buy">
+                <button className="nes-btn is-success">BUY ATT</button>
+              </Link>
             </Row>
           </div>
         </div>
