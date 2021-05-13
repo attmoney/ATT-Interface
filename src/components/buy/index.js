@@ -61,7 +61,7 @@ function BuyComponent() {
         const _result = await Instance.methods.buyTokens(address).send({ from: address, value: _enteredValue })
         console.log(_result.transactionHash)
         if (_result) {
-          const txHash = 'https://testnet.bscscan.com/tx/' + _result.transactionHash
+          const txHash = 'https://bscscan.com/tx/' + _result.transactionHash
           Error.toastifyMsg(
             'tx',
             <div>
@@ -186,7 +186,7 @@ function BuyComponent() {
                         buyToken()
                       }}
                     >
-                      {loaderState && <span>wait ...</span>}
+                      {loaderState && <span>Processing ...</span>}
                       {!loaderState && <span>BUY ATT</span>}
                     </button>
                   </div>

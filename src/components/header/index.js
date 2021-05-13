@@ -12,6 +12,7 @@ import Provider from '../../helpers/provider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 function Header() {
   const [walletOpen, setWalletOpen] = useState(false);
@@ -64,7 +65,8 @@ function Header() {
       <ErrorModal />
       <Navbar expand="lg">
         <Navbar.Brand>
-          <a href="https://www.att.money/" className="nes-badge">
+            
+          <Link to="/" className="nes-badge">
             <button
               type="button"
               className="nes-btn is-success"
@@ -76,7 +78,8 @@ function Header() {
                 style={{ marginTop: '-10px', margin: 'auto', width: '100px' }}
               />
             </button>
-          </a>
+          
+              </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>

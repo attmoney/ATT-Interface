@@ -31,14 +31,14 @@ function Provider() {
         });
         provider.on('chainChanged', async (chainId) => {
           const _chainId = web3.utils.toBN(chainId).toString();
-          if (_chainId === 56 ||  _chainId === 97) {
+          if (_chainId === 56 ) {
             console.log('Connection Success ...');
           } else {
             Error.toastifyMsg(
               'err',
               'Chainid ' +
                 _chainId +
-                ' is not supportable. Connect to binance mainnet'
+                ' is not supported. Connect to binance mainnet'
             );
           }
         });

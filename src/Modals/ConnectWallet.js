@@ -75,7 +75,7 @@ function Modals(props) {
     dispatch(WalletAction.selectWallet(type));
     await getweb3(type).then(async (response) => {
       const _chainId = await response.eth.getChainId();
-      if (_chainId === 56 || _chainId === 97) {
+      if (_chainId === 56) {
         response.eth.getAccounts().then((result) => {
           dispatch(WalletAction.setWalletAddress(result[0]));
           response.eth.getBalance(result[0]).then(async (result1) => {
@@ -84,7 +84,7 @@ function Modals(props) {
           });
         });
       } else {
-        Error.toastifyMsg('err', 'Chainid ' + _chainId + ' is not supportable');
+        Error.toastifyMsg('err', 'Chainid ' + _chainId + ' is not supported. Connect to BSC Mainnet');
       }
     });
   }
