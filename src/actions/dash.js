@@ -15,7 +15,7 @@ function getPrimaryStats() {
         basePrice: 0,
         marketCap: 0,
         tvl: 0,
-        nextBuyBack: 'NA',
+        nextBuyBack: '* TBA *',
         lastRebase: 'NA',
         nextRebase: 'NA',
         canRebase: false

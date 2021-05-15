@@ -132,26 +132,26 @@ function BuyComponent() {
       <Container>
         <div className="nes-container is-dark with-title " style={{ marginTop: '50px' }}>
           <p className="title" style={{ color: '#f7d51d' }}>
-            BUY ATT
+            BUY ZONE
           </p>
           <p>
             Buy ATT today & Invest in the very first conditional rebasing token on BSC that powers complete advance
             trading ecosystem.{' '}
-            <a
+            {/* <a
               className="nes-text is-success"
               href="https://attmoney.medium.com/att-public-sale-announcement-3161a0ebb200"
               target="_blank"
               rel="noreferrer"
             >
               Read More.
-            </a>
+            </a> */}
           </p>
 
           <Row style={{ marginTop: '50px' }}>
             <Col>
               <div className="nes-container is-dark with-title is-centered">
                 <p className="title" style={{ color: '#f7d51d' }}>
-                  BUY ZONE
+                  BUY ATT
                 </p>
 
                 {address !== '' ? (

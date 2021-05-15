@@ -49,7 +49,7 @@ function XAttComponent() {
           style={{ marginTop: '50px' }}
         >
           <p className="title" style={{ color: '#f7d51d' }}>
-            ATT NATIVE STAKING
+            xATT ZONE
           </p>
           <p>Deposit & Convert your ATT tokens to xATT tokens.</p>
           <Row style={{ marginTop: '50px' }}>

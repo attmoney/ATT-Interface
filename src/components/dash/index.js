@@ -3,25 +3,25 @@ import { useSelector, useDispatch } from 'react-redux'
 import { DASH } from '../../actions'
 import { Container, Row, Col, Card } from 'react-bootstrap'
 import 'nes.css/css/nes.min.css'
-import cgl from '../../assets/enablers/cg_logo.png'
+//import cgl from '../../assets/enablers/cg_logo.png'
 import bscl from '../../assets/enablers/bsc_logo.png'
 import bscsl from '../../assets/enablers/bscs_logo.png'
-import cmcl from '../../assets/enablers/cmc_logo.png'
+//import cmcl from '../../assets/enablers/cmc_logo.png'
 import pcsl from '../../assets/enablers/pcsl.png'
-import Web3 from 'web3'
-import { contract } from '../../common/contractconfig'
+//import Web3 from 'web3'
+//import { contract } from '../../common/contractconfig'
 import MultiWallet from '../../Modals/ConnectWallet'
-import { Error } from '../../actions'
+//import { Error } from '../../actions'
 import { Link } from 'react-router-dom'
 
 function DashComponent() {
   const dispatch = useDispatch()
   const primaryStats = useSelector((store) => store.dash.primaryStats)
-  const currentProvider = useSelector((store) => store.wallet.provider)
+  //const currentProvider = useSelector((store) => store.wallet.provider)
   const [walletOpen, setWalletOpen] = useState(false)
-  const [loaderState, setScreenLoader] = useState(false)
+  //const [loaderState, setScreenLoader] = useState(false)
   const address = useSelector((store) => store.wallet.walletAddress)
-  const canRebase = false
+  //const canRebase = false
 
   useEffect(() => {
     if (address !== '') {
@@ -34,23 +34,23 @@ function DashComponent() {
     setWalletOpen(false)
   }
 
-  async function performRebase() {
-    try {
-      const web3WalletWrapper = new Web3(currentProvider)
-      const Instance = new web3WalletWrapper.eth.Contract(contract.MasterABI, contract.MasterAddress)
-      const _result = await Instance.methods.rebase().send({ from: address })
-      if (_result) {
-        dispatch(DASH.getPrimaryStats())
-        Error.toastifyMsg('info', 'Rebase Success')
-      } else {
-        Error.toastifyMsg('err', 'Rebase Failed')
-      }
-    } catch (err) {
-      console.log('err', err)
-      Error.toastifyMsg('err', 'Rebase Failed')
-    }
-    setScreenLoader(false)
-  }
+  // async function performRebase() {
+  //   try {
+  //     const web3WalletWrapper = new Web3(currentProvider)
+  //     const Instance = new web3WalletWrapper.eth.Contract(contract.MasterABI, contract.MasterAddress)
+  //     const _result = await Instance.methods.rebase().send({ from: address })
+  //     if (_result) {
+  //       dispatch(DASH.getPrimaryStats())
+  //       Error.toastifyMsg('info', 'Rebase Success')
+  //     } else {
+  //       Error.toastifyMsg('err', 'Rebase Failed')
+  //     }
+  //   } catch (err) {
+  //     console.log('err', err)
+  //     Error.toastifyMsg('err', 'Rebase Failed')
+  //   }
+  //   setScreenLoader(false)
+  // }
 
   return (
     <div className="mdb-container">
@@ -164,26 +164,28 @@ function DashComponent() {
           <p className="title" style={{ color: '#f7d51d' }}>
             ATT ENABLERS
           </p>
-          <a href="#">
-            <img src={pcsl} style={{ alignContent: 'center', marginRight: '15px' }} />
+          <Row className="is-centered" style={{ paddingLeft: '100px', paddingRight: '90px' }}>
+          <a href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xc667Dd95F5f3a2919DFc4c80C68753C0C6AcCBD0" target="_blank" rel="noreferrer">
+            <img src={pcsl}   style={{ alignContent: 'center', marginRight: '70px' }}/>
             {''}
           </a>
           <a href="https://www.binance.org/en" target="_blank" rel="noreferrer">
-            <img src={bscl} style={{ alignContent: 'center', marginRight: '15px' }} />
+            <img src={bscl}  style={{ alignContent: 'center', marginRight: '70px' }}/>
           </a>
           <a
             href="https://bscscan.com/address/0xc667Dd95F5f3a2919DFc4c80C68753C0C6AcCBD0/"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={bscsl} style={{ alignContent: 'center', marginRight: '15px' }} />
+            <img src={bscsl}  style={{ alignContent: 'center', marginRight: '50px' }} />
           </a>
-          <a href="#">
+          </Row>
+          {/* <a href="#">
             <img src={cgl} style={{ alignContent: 'center', marginRight: '15px' }} />
           </a>
           <a href="#">
             <img src={cmcl} style={{ alignContent: 'center', marginRight: '15px' }} />
-          </a>
+          </a> */}
         </div>
       </Container>
 
@@ -251,7 +253,7 @@ function DashComponent() {
           </div>
         </div>
       </Container>
-      <Container style={{ marginLeft: '10px' }}>
+      {/* <Container style={{ marginLeft: '10px' }}>
         <div className="row" style={{ marginTop: '50px' }}>
           <div className="col-md-4">
             <Card className="mb-2 ">
@@ -314,7 +316,7 @@ function DashComponent() {
             </Card>
           </div>
         </div>
-      </Container>
+      </Container> */}
       <Container style={{ marginTop: '50px' }}>
         <div className="nes-container is-dark with-title" style={{ marginTop: '60px' }}>
           <p className="title" style={{ color: '#f7d51d' }}>
