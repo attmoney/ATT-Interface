@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import thunk from 'redux-thunk'
 
-import { Wallet, Error, DASH, BUY, ZELDA, XATT } from '../reducers';
+import { Wallet, Error, DASH, BUY, ZELDA, XATT, FARM } from '../reducers'
 
-const middleWare = applyMiddleware(thunk);
+const middleWare = applyMiddleware(thunk)
 const Init = () => {
   const reducer = combineReducers({
     wallet: Wallet,
@@ -12,9 +12,10 @@ const Init = () => {
     buy: BUY,
     zelda: ZELDA,
     xatt: XATT,
-  });
-  const store = createStore(reducer, middleWare);
-  return store;
-};
+    farm: FARM,
+  })
+  const store = createStore(reducer, middleWare)
+  return store
+}
 
-export { Init };
+export { Init }

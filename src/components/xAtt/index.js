@@ -134,7 +134,7 @@ function XAttComponent() {
             xATT ZONE
           </p>
           <p>Convert your ATT tokens to non-rebasing xATT tokens or vice-versa.</p>
-          <Row style={{ marginTop: '50px' }}>
+          <Row style={{ marginTop: '40px' }}>
             <Col>
               <div className="nes-container is-dark with-title is-centered">
                 <p className="title" style={{ color: '#f7d51d' }}>
