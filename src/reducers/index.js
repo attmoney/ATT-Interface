@@ -3,3 +3,4 @@ export * from './error';
 export * from './dash';
 export * from './buy';
 export * from './zelda';
+export * from './xAtt';
